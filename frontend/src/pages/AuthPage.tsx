@@ -1,20 +1,20 @@
-import React, { useEffect } from 'react'
-import { Route, Routes, useNavigate } from "react-router-dom"
-import RegisterForm from '../components/Forms/RegisterForm'
-import LoginForm from '../components/Forms/LoginForm'
-import { useCommerceStore } from "../store"
+import React, { useEffect } from "react";
+import { Route, Routes, useNavigate } from "react-router-dom";
+import RegisterForm from "../components/Forms/RegisterForm";
+import LoginForm from "../components/Forms/LoginForm";
+import { useCommerceStore } from "../store";
 
 function AuthPage() {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
-  const { token } = useCommerceStore()
+  const { token } = useCommerceStore();
 
   useEffect(() => {
     if (token) {
-      return navigate('/home')
+      return navigate("/");
     }
-  }, [])
-  
+  }, []);
+
   return (
     <div className="flex items-center flex-wrap justify-center">
       <div className="auth w-1/2 min-w-[400px]">
@@ -27,7 +27,7 @@ function AuthPage() {
         <img src="/landing.webp" alt="" />
       </div>
     </div>
-  )
+  );
 }
 
-export default AuthPage
+export default AuthPage;

@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
-import './App.css';
-import Register from './components/Forms/RegisterForm';;
-import Login from './components/Forms/LoginForm';
+import React, { useEffect, useState } from "react";
+import "./App.css";
+import Register from "./components/Forms/RegisterForm";
+import Login from "./components/Forms/LoginForm";
 import { useCommerceStore } from "./store";
 import Review from "./components/Forms/Review";
 import AddProduct from "./components/Forms/AddProduct";
@@ -16,24 +16,18 @@ import MyOrders from "./pages/MyOrders";
 import CartModal from "./components/Cart/CartModal";
 
 function App() {
-  const {
-    token,
-    showCart,
-    setShowCart
-  } = useCommerceStore()
-  const location = useLocation()
-  const [showFilters, setShowFilters] = useState(false)
+  const { token, showCart, setShowCart } = useCommerceStore();
+  const location = useLocation();
+  const [showFilters, setShowFilters] = useState(false);
 
   useEffect(() => {
-    const pathsToShowFilters = [
-      '/home'
-    ]
+    const pathsToShowFilters = ["/"];
     if (pathsToShowFilters.includes(location.pathname)) {
-      setShowFilters(true)
+      setShowFilters(true);
     } else {
-      setShowFilters(false)
+      setShowFilters(false);
     }
-  }, [location])
+  }, [location]);
 
   return (
     <div className="App">
@@ -53,13 +47,12 @@ function App() {
       
       <CreateStore/> */}
       <Routes>
-        <Route path="/home" element={<ProductList />} />
+        <Route path="/" element={<ProductList />} />
         <Route path="/sell" element={<CreateStorePage />} />
         <Route path="/my-orders" element={<MyOrders />} />
         <Route path="/auth/*" element={<AuthPage />} />
         <Route path="/*" element={<ProductList />} />
       </Routes>
-
     </div>
   );
 }
